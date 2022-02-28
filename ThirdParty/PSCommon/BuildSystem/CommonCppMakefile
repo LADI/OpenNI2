@@ -84,7 +84,7 @@ ifneq "$(LIB_NAME)" ""
 	ifneq ("$(OSTYPE)","Darwin")
 		LDFLAGS += -Wl,--no-undefined
 		OUTPUT_NAME = lib$(LIB_NAME).so
-		OUTPUT_COMMAND = $(CXX) -o $(OUTPUT_FILE) $(OBJ_FILES) $(LDFLAGS) -shared
+		OUTPUT_COMMAND = $(CXX) -o $(OUTPUT_FILE) $(OBJ_FILES) -Wl,-soname,$(OUTPUT_NAME) $(LDFLAGS) -shared
 	else
 		LDFLAGS += -undefined error
 		OUTPUT_NAME = lib$(LIB_NAME).dylib
@@ -93,8 +93,6 @@ ifneq "$(LIB_NAME)" ""
 endif
 ifneq "$(EXE_NAME)" ""
 	OUTPUT_NAME = $(EXE_NAME)
-	# We want the executables to look for the .so's locally first:
-	LDFLAGS += -Wl,-rpath ./
 	OUTPUT_COMMAND = $(CXX) -o $(OUTPUT_FILE) $(OBJ_FILES) $(LDFLAGS)
 endif
 ifneq "$(SLIB_NAME)" ""

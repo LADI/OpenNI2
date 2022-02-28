@@ -5,14 +5,12 @@ BIN_DIR = ../../Bin
 INC_DIRS = \
 	../../Include \
 	../../ThirdParty/PSCommon/XnLib/Include \
-	../Drivers/OniFile/Formats \
-	../../ThirdParty/LibJPEG
+	../Drivers/OniFile/Formats
 
 SRC_FILES = \
 	*.cpp \
 	../Drivers/OniFile/Formats/XnCodec.cpp \
-	../Drivers/OniFile/Formats/XnStreamCompression.cpp \
-	../../ThirdParty/LibJPEG/*.c \
+	../Drivers/OniFile/Formats/XnStreamCompression.cpp
 
 ifeq ("$(OSTYPE)","Darwin")
 	INC_DIRS += /opt/local/include
@@ -23,7 +21,7 @@ endif
 LIB_NAME = OpenNI2
 
 LIB_DIRS = ../../ThirdParty/PSCommon/XnLib/Bin/$(PLATFORM)-$(CFG)
-USED_LIBS = XnLib dl pthread
+USED_LIBS = XnLib jpeg dl pthread
 ifneq ("$(OSTYPE)","Darwin")
         USED_LIBS += rt  
 endif
