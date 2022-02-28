@@ -2,6 +2,7 @@
 *                                                                            *
 *  PrimeSense PSCommon Library                                               *
 *  Copyright (C) 2012 PrimeSense Ltd.                                        *
+*  Copyleft (C) 2022 Nedko Arnaudov                                          *
 *                                                                            *
 *  This file is part of PSCommon.                                            *
 *                                                                            *
@@ -31,6 +32,7 @@
 #define XN_PLATFORM_LINUX_ARM 7
 #define XN_PLATFORM_MACOSX 8
 #define XN_PLATFORM_ANDROID_ARM 9
+#define XN_PLATFORM_LINUX_AARCH64 10
 
 #define XN_PLATFORM_IS_LITTLE_ENDIAN 1
 #define XN_PLATFORM_IS_BIG_ENDIAN    2
@@ -53,6 +55,8 @@
 #include "Linux-x86/XnPlatformLinux-x86.h"
 #elif (__linux__ && __arm__)
 #include "Linux-Arm/XnPlatformLinux-Arm.h"
+#elif (__linux__ && __aarch64__)
+#include "Linux-AArch64/XnPlatformLinux-AArch64.h"
 #elif _ARC
 #include "ARC/XnPlaformARC.h"
 #elif (__APPLE__)

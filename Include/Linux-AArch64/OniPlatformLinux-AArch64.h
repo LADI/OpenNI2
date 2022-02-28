@@ -19,58 +19,19 @@
 *  limitations under the License.                                            *
 *                                                                            *
 *****************************************************************************/
-#ifndef ONIPLATFORM_H
-#define ONIPLATFORM_H
+#ifndef ONIPLATFORMLINUX_AARCH64_H
+#define ONIPLATFORMLINUX_AARCH64_H
 
-// Supported platforms
-#define ONI_PLATFORM_WIN32 1
-#define ONI_PLATFORM_LINUX_X86 2
-#define ONI_PLATFORM_LINUX_ARM 3
-#define ONI_PLATFORM_MACOSX 4
-#define ONI_PLATFORM_ANDROID_ARM 5
-#define ONI_PLATFORM_LINUX_AARCH64 6
+// Start with Linux-x86, and override what's different
+#include "../Linux-x86/OniPlatformLinux-x86.h"
 
-#if (defined _WIN32)
-#	ifndef RC_INVOKED
-#		if _MSC_VER < 1300
-#			error OpenNI Platform Abstraction Layer - Win32 - Microsoft Visual Studio version below 2003 (7.0) are not supported!
-#		endif
-#	endif
-#	include "Win32/OniPlatformWin32.h"
-#elif defined (ANDROID) && defined (__arm__)
-#	include "Android-Arm/OniPlatformAndroid-Arm.h"
-#elif (__linux__ && (i386 || __x86_64__))
-#	include "Linux-x86/OniPlatformLinux-x86.h"
-#elif (__linux__ && __arm__)
-#	include "Linux-Arm/OniPlatformLinux-Arm.h"
-#elif (__linux__ && __aarch64__)
-#	include "Linux-AArch64/OniPlatformLinux-AArch64.h"
-#elif _ARC
-#	include "ARC/OniPlaformARC.h"
-#elif (__APPLE__)
-#	include "MacOSX/OniPlatformMacOSX.h"
-#else
-#	error Xiron Platform Abstraction Layer - Unsupported Platform!
-#endif
+//---------------------------------------------------------------------------
+// Platform Basic Definition
+//---------------------------------------------------------------------------
+#undef ONI_PLATFORM
+#undef ONI_PLATFORM_STRING
+#define ONI_PLATFORM ONI_PLATFORM_LINUX_ARM
+#define ONI_PLATFORM_STRING "Linux-Arm"
 
-#ifdef __cplusplus
-#	define ONI_C extern "C"
-#	define ONI_C_API_EXPORT ONI_C ONI_API_EXPORT
-#	define ONI_C_API_IMPORT ONI_C ONI_API_IMPORT
-#	define ONI_CPP_API_EXPORT ONI_API_EXPORT
-#	define ONI_CPP_API_IMPORT ONI_API_IMPORT
-#else // __cplusplus
-#	define ONI_C_API_EXPORT ONI_API_EXPORT
-#	define ONI_C_API_IMPORT ONI_API_IMPORT
-#endif  // __cplusplus
+#endif // ONIPLATFORMLINUX_AARCH64_H
 
-#ifdef OPENNI2_EXPORT
-#	define ONI_C_API ONI_C_API_EXPORT
-#	define ONI_CPP_API ONI_CPP_API_EXPORT
-#else // OPENNI2_EXPORT
-#	define ONI_C_API ONI_C_API_IMPORT
-#	define ONI_CPP_API ONI_CPP_API_IMPORT
-#endif // OPENNI2_EXPORT
-
-
-#endif // ONIPLATFORM_H

@@ -49,12 +49,12 @@ CXX_MAIN_SUBDIRS = \
 	$(CORE) \
 	ThirdParty/PSCommon/XnLib/Source \
 	Source/DepthUtils \
-	Source/Drivers/DummyDevice   \
-	Source/Drivers/PS1080 \
-	Source/Drivers/PSLink \
-	Source/Drivers/OniFile \
-	Source/Drivers/PS1080/PS1080Console \
-	Source/Drivers/PSLink/PSLinkConsole
+	Source/Drivers/DummyDevice
+#	Source/Drivers/PS1080 \
+#	Source/Drivers/PSLink \
+#	Source/Drivers/OniFile \
+#	Source/Drivers/PS1080/PS1080Console \
+#	Source/Drivers/PSLink/PSLinkConsole
 
 CXX_SAMPLES_SUBDIRS = \
 	Samples/SimpleRead \

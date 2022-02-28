@@ -2,6 +2,7 @@
 *                                                                            *
 *  PrimeSense PSCommon Library                                               *
 *  Copyright (C) 2012 PrimeSense Ltd.                                        *
+*  Copyleft (C) 2022 Nedko Arnaudov                                          *
 *                                                                            *
 *  This file is part of PSCommon.                                            *
 *                                                                            *
@@ -43,7 +44,7 @@
 //---------------------------------------------------------------------------
 #if (XN_PLATFORM == XN_PLATFORM_WIN32)
 	#include "Win32/XnOSWin32.h"
-#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM)
+#elif (XN_PLATFORM == XN_PLATFORM_LINUX_X86 || XN_PLATFORM == XN_PLATFORM_LINUX_ARM || XN_PLATFORM == XN_PLATFORM_ANDROID_ARM || XN_PLATFORM == XN_PLATFORM_LINUX_AARCH64)
 	#include "Linux-x86/XnOSLinux-x86.h"
 #elif (XN_PLATFORM == XN_PLATFORM_MACOSX)
         #include "MacOSX/XnOSMacOSX.h"
