@@ -15,15 +15,18 @@ SRC_FILES = \
 
 
 ifeq ("$(OSTYPE)","Darwin")
-	INC_DIRS += /opt/local/include
-	LIB_DIRS += /opt/local/lib
-#	LDFLAGS += -framework CoreFoundation -framework IOKit
+	INC_DIRS += \
+		/usr/local/include \
+		/opt/local/include
+	LIB_DIRS += \
+		/usr/local/lib \
+		/opt/local/lib
 endif
 
 LIB_NAME = OniFile
 
 LIB_DIRS = ../../../ThirdParty/PSCommon/XnLib/Bin/$(PLATFORM)-$(CFG)
-USED_LIBS = XnLib jpeg pthread 
+USED_LIBS = XnLib jpeg pthread dl
 ifneq ("$(OSTYPE)","Darwin")
         USED_LIBS += rt  
 endif
